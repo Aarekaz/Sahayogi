@@ -6,4 +6,4 @@ Sahayogi App
 
 This project is done in requrement of our E Govermence Lab.
 
-This app is a All in one Government App. It will contain all servies from Nepal Goverment.
+This app is a All in one Government App. It will contain all servies from Nepal Goverment along with some unique and user friendly features.
