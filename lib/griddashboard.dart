@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:all_in_one_goverment_app/aapatkalin.dart';
-import 'package:all_in_one_goverment_app/karyakram.dart';
-import 'package:all_in_one_goverment_app/sewaharu.dart';
-import 'package:all_in_one_goverment_app/suchana.dart';
-import 'package:all_in_one_goverment_app/sujhav.dart';
+import 'package:sahayogi/aapatkalin.dart';
+import 'package:sahayogi/karyakram.dart';
+import 'package:sahayogi/sewaharu.dart';
+import 'package:sahayogi/suchana.dart';
+import 'package:sahayogi/sujhav.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:all_in_one_goverment_app/hamro_barema.dart';
+import 'package:sahayogi/hamro_barema.dart';
 import 'samshya.dart';
 import 'mahatyo.dart';
 

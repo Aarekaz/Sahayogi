@@ -7,7 +7,6 @@ import 'slider.dart';
 void main() => runApp(MaterialApp(home: Home()));
 
 class Home extends StatefulWidget {
-
   @override
   HomeState createState() => new HomeState();
 }
@@ -18,12 +17,10 @@ class HomeState extends State<Home> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Color(0xFF303F9F),
-        title: Text("फलानो गाउँपालिका एप"),
+        title: Text("Sahayogi"),
       ),
       drawer: Theme(
-        data: Theme.of(context).copyWith(
-            canvasColor: Colors.indigo
-        ),
+        data: Theme.of(context).copyWith(canvasColor: Colors.indigo),
         child: Drawer(
           child: MainDrawer(),
         ),
