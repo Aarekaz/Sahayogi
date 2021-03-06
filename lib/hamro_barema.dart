@@ -49,8 +49,10 @@ class CustomListView extends StatelessWidget {
                   Padding(
                       child: Text(
                         data.title,
-                        style: new TextStyle(fontWeight: FontWeight.bold,
-                          fontSize: 20.0,),
+                        style: new TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20.0,
+                        ),
                         textAlign: TextAlign.right,
                       ),
                       padding: EdgeInsets.all(1.0))
@@ -64,8 +66,7 @@ class CustomListView extends StatelessWidget {
           //A MaterialPageRoute is a modal route that replaces the entire
           //screen with a platform-adaptive transition.
           var route = new MaterialPageRoute(
-            builder: (BuildContext context) =>
-            new SecondScreen(value: data),
+            builder: (BuildContext context) => new SecondScreen(value: data),
           );
           //A Navigator is a widget that manages a set of child widgets with
           //stack discipline.It allows us navigate pages.
@@ -83,9 +84,7 @@ Future<List<Data>> downloadJSON() async {
 
   if (response.statusCode == 200) {
     List data = json.decode(response.body);
-    return data
-        .map((data) => new Data.fromJson(data))
-        .toList();
+    return data.map((data) => new Data.fromJson(data)).toList();
   } else
     throw Exception('We were not able to successfully download the json data.');
 }
@@ -103,8 +102,7 @@ class _SecondScreenState extends State<SecondScreen> {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
-      appBar: new AppBar(centerTitle: true,
-          title: new Text('विस्तृत जानकारी')),
+      appBar: new AppBar(centerTitle: true, title: new Text('विस्तृत जानकारी')),
       body: new Container(
         child: new Center(
           child: Column(
@@ -112,8 +110,8 @@ class _SecondScreenState extends State<SecondScreen> {
               Padding(
                 child: new Text(
                   widget.value.title,
-                  style: new TextStyle(fontWeight: FontWeight.bold,
-                      fontSize: 25.0),
+                  style: new TextStyle(
+                      fontWeight: FontWeight.bold, fontSize: 25.0),
                   textAlign: TextAlign.left,
                 ),
                 padding: EdgeInsets.all(20.0),
@@ -126,7 +124,8 @@ class _SecondScreenState extends State<SecondScreen> {
                 ),
                 padding: EdgeInsets.all(20.0),
               )
-            ],   ),
+            ],
+          ),
         ),
       ),
     );
@@ -138,7 +137,7 @@ class Hamro_barema extends StatelessWidget {
   Widget build(BuildContext context) {
     return new MaterialApp(
       theme: new ThemeData(
-        primarySwatch: Colors.deepOrange,
+        primarySwatch: Colors.indigo,
       ),
       home: new Scaffold(
         appBar: new AppBar(
@@ -147,8 +146,10 @@ class Hamro_barema extends StatelessWidget {
               icon: Icon(Icons.arrow_back),
               onPressed: () => Navigator.of(context).pop(),
             ),
-            title: const Text('हाम्रो बारेमा',
-              textAlign: TextAlign.center,)),
+            title: const Text(
+              'हाम्रो बारेमा',
+              textAlign: TextAlign.center,
+            )),
         body: new Center(
           //FutureBuilder is a widget that builds itself based on the latest snapshot
           // of interaction with a Future.
@@ -168,7 +169,6 @@ class Hamro_barema extends StatelessWidget {
               return new CircularProgressIndicator();
             },
           ),
-
         ),
       ),
     );
