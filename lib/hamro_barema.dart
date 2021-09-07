@@ -78,7 +78,7 @@ class CustomListView extends StatelessWidget {
 //Future is n object representing a delayed computation.
 Future<List<Data>> downloadJSON() async {
   final jsonEndpoint =
-      "http://updatejewelry.com/rural_munici/hamro_barema/hamro_barema_json.php";
+      "http://localhost/rural_munici/hamro_barema/hamro_barema_json.php";
 
   final response = await get(jsonEndpoint);
 

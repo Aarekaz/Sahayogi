@@ -84,49 +84,58 @@ class _GridDashboardState extends State<GridDashboard> {
     ];
     var color = 0xB3FFFFFF;
     return Flexible(
-      child: GridView.count(
-          childAspectRatio: 1.0,
-          padding: EdgeInsets.only(left: 16, right: 16),
-          crossAxisCount: 3,
-          crossAxisSpacing: 15,
-          mainAxisSpacing: 15,
-          children: myList.map((data) {
-            return InkWell(
-              child: Container(
-                decoration: BoxDecoration(
-                    color: Color(color),
-                    borderRadius: BorderRadius.circular(10)),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    Image.asset(
-                      data.img,
-                      width: 45,
-                    ),
-                    SizedBox(
-                      height: 14,
-                    ),
-                    Text(
-                      data.title,
-                      textAlign: TextAlign.center,
-                      style: GoogleFonts.openSans(
-                          textStyle: TextStyle(
-                              color: Colors.black,
-                              fontSize: 15,
-                              fontWeight: FontWeight.w500)),
-                    ),
-                    SizedBox(
-                      height: 8,
-                    ),
-                  ],
+      child: Container(
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.only(
+            topRight: Radius.circular(15.0),
+            topLeft: Radius.circular(15.0),
+          ),
+        ),
+        child: GridView.count(
+            childAspectRatio: 1.0,
+            padding: EdgeInsets.only(left: 20, right: 20),
+            crossAxisCount: 3,
+            crossAxisSpacing: 15,
+            mainAxisSpacing: 15,
+            children: myList.map((data) {
+              return InkWell(
+                child: Container(
+                  decoration: BoxDecoration(
+                      color: Color(color),
+                      borderRadius: BorderRadius.circular(10)),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Image.asset(
+                        data.img,
+                        width: 45,
+                      ),
+                      SizedBox(
+                        height: 14,
+                      ),
+                      Text(
+                        data.title,
+                        textAlign: TextAlign.center,
+                        style: GoogleFonts.openSans(
+                            textStyle: TextStyle(
+                                color: Colors.black,
+                                fontSize: 15,
+                                fontWeight: FontWeight.w500)),
+                      ),
+                      SizedBox(
+                        height: 8,
+                      ),
+                    ],
+                  ),
                 ),
-              ),
-              onTap: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => data.page));
-              },
-            );
-          }).toList()),
+                onTap: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => data.page));
+                },
+              );
+            }).toList()),
+      ),
     );
   }
 }

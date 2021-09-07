@@ -1,58 +1,82 @@
+/// Flutter code sample for BottomNavigationBar
+
+// This example shows a [BottomNavigationBar] as it is used within a [Scaffold]
+// widget. The [BottomNavigationBar] has three [BottomNavigationBarItem]
+// widgets, which means it defaults to [BottomNavigationBarType.fixed], and
+// the [currentIndex] is set to index 0. The selected item is
+// amber. The `_onItemTapped` function changes the selected item's index
+// and displays a corresponding message in the center of the [Scaffold].
+
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'griddashboard.dart';
+import 'package:sahayogi/userprofile.dart';
+
+import 'home.dart';
 import 'maindrawer.dart';
-import 'slider.dart';
 
-void main() => runApp(MaterialApp(home: Home()));
+void main() => runApp(const MyApp());
 
-class Home extends StatefulWidget {
+/// This is the main application widget.
+class MyApp extends StatelessWidget {
+  const MyApp({Key key}) : super(key: key);
+
+  static const String _title = 'Flutter Code Sample';
+
   @override
-  HomeState createState() => new HomeState();
+  Widget build(BuildContext context) {
+    return const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: _title,
+      home: MyStatefulWidget(),
+    );
+  }
 }
 
-class HomeState extends State<Home> {
+/// This is the stateful widget that the main application instantiates.
+class MyStatefulWidget extends StatefulWidget {
+  const MyStatefulWidget({Key key}) : super(key: key);
+
+  @override
+  State<MyStatefulWidget> createState() => _MyStatefulWidgetState();
+}
+
+/// This is the private State class that goes with MyStatefulWidget.
+class _MyStatefulWidgetState extends State<MyStatefulWidget> {
+  int _selectedIndex = 0;
+  static const TextStyle optionStyle =
+      TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
+  static List<Widget> _widgetOptions = <Widget>[
+    Home(),
+    
+    profile(),
+  ];
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Color(0xFF303F9F),
-        title: Text("Sahayogi"),
+      body: Center(
+        child: _widgetOptions.elementAt(_selectedIndex),
       ),
-      drawer: Theme(
-        data: Theme.of(context).copyWith(canvasColor: Colors.indigo),
-        child: Drawer(
-          child: MainDrawer(),
-        ),
-      ),
-      backgroundColor: Color(0xFFEEEEEE),
-      body: Column(
-        children: <Widget>[
-          SizedBox(
-              height: MediaQuery.of(context).size.height / 4,
-              child: CarouselChangeReasonDemo()),
-//          CarouselChangeReasonDemo()
-          Padding(
-            padding: EdgeInsets.only(left: 16, right: 16),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    SizedBox(
-                      height: 10,
-                    ),
-                  ],
-                ),
-              ],
-            ),
+      bottomNavigationBar: BottomNavigationBar(
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'Home',
           ),
-          SizedBox(
-            height: 40,
+          
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person),
+            label: 'Profile',
           ),
-          GridDashboard()
         ],
+        currentIndex: _selectedIndex,
+        selectedItemColor: Colors.indigo,
+        onTap: _onItemTapped,
       ),
     );
   }
